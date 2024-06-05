@@ -4,6 +4,7 @@ import browserfactory.BaseTest;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -109,5 +110,15 @@ public class Utility extends BaseTest {
         Select select = new Select(dropDown);
         // Select by visible Text
         select.selectByVisibleText(value);
+    }
+
+    public void mouseHoverToElement(By by){
+        Actions act = new Actions(driver);
+        act.moveToElement(findSingleElement(by)).build().perform();
+    }
+
+    public void mouseHoverToElementAndClick(By by){
+        Actions act = new Actions(driver);
+        act.moveToElement(findSingleElement(by)).click().build().perform();
     }
 }
